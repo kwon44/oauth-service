@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "1da8576f-710c-4793-a12e-5ead81ecd336",
+		"name": "OAuth2 Test",
+		"description": "OAuth2&Resource API測試",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8888/oauth/token?username=admin123&password=a123456&grant_type=password",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "beclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/oauth/token?username=admin123&password=a123456&grant_type=password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin123"
+						},
+						{
+							"key": "password",
+							"value": "a123456"
+						},
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "scope",
+							"value": "beaccount.read beaccount.write beaccount.delete",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Resource Owner Password Credentials Grant Flow\n向OAuth2取得accessToken"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/oauth/check_token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "beclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "9f5a8049-ee97-404c-957a-a8bb622da56e",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8888/oauth/check_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/oauth/token?grant_type=refresh_token&refresh_token=3c639dfa-f676-40e8-8fe9-f2fc8755adee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "beclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/oauth/token?grant_type=refresh_token&refresh_token=3c639dfa-f676-40e8-8fe9-f2fc8755adee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token"
+						},
+						{
+							"key": "refresh_token",
+							"value": "3c639dfa-f676-40e8-8fe9-f2fc8755adee"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8888/oauth/token?grant_type=client_credentials&scope=infomessage.2c.marquee.read infomessage.2c.marquee.create",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "messageclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/oauth/token?grant_type=client_credentials&scope=infomessage.2c.marquee.read infomessage.2c.marquee.create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						},
+						{
+							"key": "scope",
+							"value": "infomessage.2c.marquee.read infomessage.2c.marquee.create"
+						}
+					]
+				},
+				"description": "Client Credentials Grant Flow\n向OAuth2取accessToken"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/beaccount/getbeaccount/3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8472b699-1a4f-4609-a8e7-1878ee20ad5d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/beaccount/getbeaccount/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beaccount",
+						"getbeaccount",
+						"3"
+					]
+				},
+				"description": "測試scope:beaccount.read"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/beaccount/deletebeaccount/3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8472b699-1a4f-4609-a8e7-1878ee20ad5d",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/beaccount/deletebeaccount/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"beaccount",
+						"deletebeaccount",
+						"3"
+					]
+				},
+				"description": "測試role:ADMIN"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/infomessage/read",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7b5ff6e0-ba89-4781-a54d-6f7c2f87f2e2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/infomessage/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"infomessage",
+						"read"
+					]
+				},
+				"description": "Client Credentials\n測試scope:infomessage.2c.marquee.read"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/infomessage/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "7b5ff6e0-ba89-4781-a54d-6f7c2f87f2e2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/infomessage/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"infomessage",
+						"update"
+					]
+				},
+				"description": "Client Credentials\n測試client未請求scope:infomessage.2c.marquee.update,api是否會阻擋\n"
+			},
+			"response": []
+		}
+	]
+}

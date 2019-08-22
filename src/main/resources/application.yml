@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: oauth-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/demo_account?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: '123456'
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 100
+        max-wait: 60s
+        max-idle: 10
+        min-idle: 1
+    timeout: 10000s
+
+server:
+  port: 8888
+  tomcat:
+    max-threads: 500
+    min-spare-threads: 64
+    max-connections: 2000
+    uri-encoding: utf-8
+    accept-count: 2000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+mybatis-plus:
+  mapper-locations: classpath:com/oauth2/beoauthservice/mapper/impl/*.xml
+  typeAliasesPackage: com.oauth2.beoauthservice.entity
+  global-config:
+    id-type: 3
+    field-strategy: 2
+    db-column-underline: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
+
+logging:
+  path: ./logs
