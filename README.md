@@ -5,30 +5,30 @@ oauth2 service主要針對oauth2請求，產生accessToken把角色（authoritie
 
 Docker環境初使化
 ---
-####Redis  
+#### Redis  
 ```
 sudo docker pull redis  
 sudo docker run -p 6379:6379 --name myredis -d redis redis-server  
 sudo docker exec -it myredis redis-cli
 ```
-####Database
+#### Database
 ```
 docker pull mysql
 docker run -p 3306:3306 --name dbmysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
 sudo docker exec -it dbmysql bash
 mysql -h 127.0.0.1 -u root -p
 ```
-####初使化DB
+#### 初使化DB
 1. 建立db:demo_account
 2. 執行project initialize package裡的sql  
 
 測試  
 ---
-####前置作業
+#### 前置作業
 1. redis與db初使化完成
 2. 啟動eurekaserver
 3. 使用postman或其它client工具發送請求
-####Resource Owner Password Credentials Grant Flow （使用者的帳號密碼）
+#### Resource Owner Password Credentials Grant Flow （使用者的帳號密碼）
 取得token（Basic Auth：beclient/123456）
 ````
 curl -X POST \
@@ -81,7 +81,7 @@ curl -X POST \
   -H 'cookie: JSESSIONID=58724C454EED0C3FEA6718D6F5B01024' \
   -b JSESSIONID=58724C454EED0C3FEA6718D6F5B01024
 ````  
-####Client Credentials Grant Flow （Client 的帳號密碼）  
+#### Client Credentials Grant Flow （Client 的帳號密碼）  
 取得token
 ````
 curl -X POST \
